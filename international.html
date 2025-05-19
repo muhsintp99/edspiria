@@ -64,7 +64,7 @@
             </ul>
           </li> -->
 
-                    <li><a href="international.html"  class="active">International</a></li>
+                    <li><a href="international.html" class="active">International</a></li>
                     <li><a href="demostic.html">Domestic</a></li>
                     <!-- <li><a href="students-life.html">Students Life</a></li> -->
                     <!-- <li><a href="news.html">News</a></li> -->
@@ -115,6 +115,57 @@
                 </nav>
             </div>
         </div><!-- End Page Title -->
+
+
+
+        <!-- Faculty & Staff Section -->
+        <section id="faculty--staff" class="faculty--staff section">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <!-- Search -->
+                <div class="row mb-5">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="search-container" data-aos="fade-up" data-aos-delay="200">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                    placeholder="Search faculty & staff by name, department, or expertise...">
+
+                                <button class="btn search-btn" id="searchBtn" type="button"><i
+                                        class="bi bi-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="departments-nav mb-4">
+                            <h4 class="departments-title">Program</h4>
+                            <ul class="nav flex-column" id="filterProgram"></ul>
+                        </div>
+                        <div class="departments-nav mb-4">
+                            <h4 class="departments-title">Country</h4>
+                            <ul class="nav flex-column" id="filterCountry"></ul>
+                        </div>
+                        <div class="departments-nav mb-4">
+                            <h4 class="departments-title">Course</h4>
+                            <ul class="nav flex-column" id="filterCourse"></ul>
+                        </div>
+                    </div>
+
+                    <!-- Cards -->
+                    <div class="col-lg-9">
+                        <div class="department-info mb-4">
+                            <h3>International Campuses</h3>
+                        </div>
+                        <div class="row g-4" id="campusCardContainer">
+                            <!-- Dynamic Cards here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
     </main>
@@ -232,6 +283,281 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script src="./assets/js/json/college.json"></script>
+
+    <script>
+        // Filter state
+        let selectedFilters = {
+            program: 'all',
+            country: 'all',
+            course: 'all'
+        };
+
+        // Get DOM elements with correct IDs
+        const programFilterContainer = document.querySelector('#filterProgram');
+        const countryFilterContainer = document.querySelector('#filterCountry');
+        const courseFilterContainer = document.querySelector('#filterCourse');
+        const searchInput = document.querySelector('.search-container input[type="text"]');
+        const cardsContainer = document.querySelector('#campusCardContainer');
+
+        let colleges = [];
+
+        // Utility: Get unique values from array
+        function getUniqueValues(arr) {
+            return [...new Set(arr)];
+        }
+
+        // Create filter list for a specific category
+        function createFilterList(container, items, type) {
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            // Add "All" option
+            const allItem = document.createElement('li');
+            allItem.classList.add('nav-item');
+            allItem.innerHTML = `
+        <button class="nav-link active" data-filter-type="${type}" data-filter-value="all">All</button>
+    `;
+            container.appendChild(allItem);
+
+            // Add individual filter options
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.classList.add('nav-item');
+                li.innerHTML = `
+            <button class="nav-link" data-filter-type="${type}" data-filter-value="${item.toLowerCase()}">${item}</button>
+        `;
+                container.appendChild(li);
+            });
+        }
+
+        // Populate all filter categories
+        function populateFilters(data) {
+            const programs = getUniqueValues(data.map(item => item.category));
+            const countries = getUniqueValues(data.map(item => item.country));
+            const courses = getUniqueValues(data.flatMap(item =>
+                item.course_or_program.split(',').map(course => course.trim())
+            ));
+
+            createFilterList(programFilterContainer, programs, 'program');
+            createFilterList(countryFilterContainer, countries, 'country');
+            createFilterList(courseFilterContainer, courses, 'course');
+        }
+
+        // Render college cards
+        function renderCards(data) {
+            if (!cardsContainer) return;
+
+            cardsContainer.innerHTML = '';
+
+            if (data.length === 0) {
+                cardsContainer.innerHTML = '<div class="col-12"><p class="text-center">No colleges found matching your criteria.</p></div>';
+                return;
+            }
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'col-md-6 col-lg-4';
+                card.innerHTML = `
+            <div class="faculty-card">
+                <div class="faculty-image">
+                    <img src="${item.image}" alt="${item.title}" class="img-fluid" onerror="this.src='assets/img/placeholder-college.jpg'">
+                </div>
+                <div class="faculty-info">
+                    <h4>${item.title}</h4>
+                    <p class="faculty-title">${item.contents}</p>
+                    <div class="faculty-specialties">
+                        <span><strong> ${item.category}</strong></span>
+                        <span><strong> ${item.country}</strong></span>
+                        <span><strong> ${item.course_or_program}</strong></span>
+                        <span><strong> ${item.time}</strong></span>
+                    </div>
+                    <div class="faculty-contact mt-3">
+                        <a href="${item.link}" target="_blank" class="btn btn-primary btn-sm me-2">
+                            <i class="bi bi-globe"></i> Website
+                        </a>
+                        <a href="${item.campus_map}" target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-map"></i> Campus Map
+                        </a>
+                    </div>
+                    <div class="faculty-meta mt-2">
+                        <small class="text-muted">
+                            <strong> ${item.facility} </strong><br>
+                            <strong> ${item.support_and_service}</strong>
+                            ${item.recommended ? '<span class="badge bg-success ms-2">Recommended</span>' : ''}
+                        </small>
+                    </div>
+                </div>
+            </div>
+        `;
+                cardsContainer.appendChild(card);
+            });
+        }
+
+        // Filter data based on selected filters and search query
+        function filterData(data, filters, searchQuery = '') {
+            return data.filter(item => {
+                // Program filter
+                const matchProgram = filters.program === 'all' ||
+                    item.category.toLowerCase() === filters.program;
+
+                // Country filter
+                const matchCountry = filters.country === 'all' ||
+                    item.country.toLowerCase() === filters.country;
+
+                // Course filter (check if any course matches)
+                const matchCourse = filters.course === 'all' ||
+                    item.course_or_program.toLowerCase().includes(filters.course);
+
+                // Search filter (search in title, contents, and courses)
+                const matchSearch = searchQuery === '' ||
+                    item.title.toLowerCase().includes(searchQuery) ||
+                    item.contents.toLowerCase().includes(searchQuery) ||
+                    item.course_or_program.toLowerCase().includes(searchQuery) ||
+                    item.country.toLowerCase().includes(searchQuery);
+
+                return matchProgram && matchCountry && matchCourse && matchSearch;
+            });
+        }
+
+        // Handle filter button clicks
+        function handleFilterClick(e) {
+            if (e.target.tagName !== 'BUTTON') return;
+
+            const btn = e.target;
+            const type = btn.dataset.filterType;
+            const value = btn.dataset.filterValue;
+
+            // Update selected filters
+            selectedFilters[type] = value;
+
+            // Update UI - remove active class from siblings and add to clicked button
+            const siblingButtons = btn.parentElement.parentElement.querySelectorAll('button');
+            siblingButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Apply filters
+            applyFilters();
+        }
+
+        // Handle search input
+        function handleSearchInput(e) {
+            const query = e.target.value.trim().toLowerCase();
+            applyFilters(query);
+        }
+
+        // Apply all filters and search
+        function applyFilters(searchQuery = '') {
+            const internationalColleges = colleges.filter(c => c.main_category === "International");
+            const filtered = filterData(internationalColleges, selectedFilters, searchQuery);
+            renderCards(filtered);
+
+            // Update results count (optional)
+            updateResultsCount(filtered.length, internationalColleges.length);
+        }
+
+        // Update results count display (optional feature)
+        function updateResultsCount(filteredCount, totalCount) {
+            const infoElement = document.querySelector('.department-info h3');
+            if (infoElement) {
+                infoElement.textContent = `International Campuses (${filteredCount} of ${totalCount})`;
+            }
+        }
+
+        // Reset all filters to default state
+        function resetFiltersUI() {
+            [programFilterContainer, countryFilterContainer, courseFilterContainer].forEach(container => {
+                if (container) {
+                    container.querySelectorAll('button').forEach(btn => {
+                        btn.classList.toggle('active', btn.dataset.filterValue === 'all');
+                    });
+                }
+            });
+            selectedFilters = { program: 'all', country: 'all', course: 'all' };
+        }
+
+        // Handle search button click (optional)
+        function handleSearchButtonClick() {
+            const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+            applyFilters(query);
+        }
+
+        // Initialize the application using fetch
+        function init() {
+            // Show loading state
+            if (cardsContainer) {
+                cardsContainer.innerHTML = '<div class="col-12"><p class="text-center">Loading colleges...</p></div>';
+            }
+
+            // Fetch data from JSON file
+            fetch('./assets/js/json/college.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    colleges = data;
+
+                    // Filter for international colleges only
+                    const internationalColleges = colleges.filter(c => c.main_category === "International");
+
+                    // Populate filters and render cards
+                    populateFilters(internationalColleges);
+                    renderCards(internationalColleges);
+
+                    // Add event listeners for filters
+                    [programFilterContainer, countryFilterContainer, courseFilterContainer].forEach(container => {
+                        if (container) {
+                            container.addEventListener('click', handleFilterClick);
+                        }
+                    });
+
+                    // Add event listener for search input
+                    if (searchInput) {
+                        searchInput.addEventListener('input', handleSearchInput);
+                    }
+
+                    // Add event listener for search button
+                    const searchButton = document.querySelector('#searchBtn');
+                    if (searchButton) {
+                        searchButton.addEventListener('click', handleSearchButtonClick);
+                    }
+
+                    // Add enter key support for search
+                    if (searchInput) {
+                        searchInput.addEventListener('keypress', function (e) {
+                            if (e.key === 'Enter') {
+                                handleSearchButtonClick();
+                            }
+                        });
+                    }
+
+                    console.log(`Loaded ${internationalColleges.length} international colleges`);
+                })
+                .catch(error => {
+                    console.error('Error loading college data:', error);
+                    if (cardsContainer) {
+                        cardsContainer.innerHTML = `
+                    <div class="col-12">
+                        <div class="alert alert-danger text-center" role="alert">
+                            <h4>Error Loading Data</h4>
+                            <p>Failed to load college data: ${error.message}</p>
+                            <p>Please check if the file <code>./assets/js/json/college.json</code> exists and is accessible.</p>
+                            <button class="btn btn-outline-danger" onclick="init()">Try Again</button>
+                        </div>
+                    </div>
+                `;
+                    }
+                });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+
 
 </body>
 

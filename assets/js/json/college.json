@@ -5,13 +5,15 @@
     "time": "Regular, Online",
     "course_or_program": "Engineering, Data Science, Management",
     "category": "Graduate",
-    "image": "assets/img/colleges/iit-madras.jpg",
+    "image": "assets/img/education/campus-2.webp",
     "link": "https://www.iitm.ac.in",
     "country": "India",
     "campus_map": "https://maps.google.com/?q=IIT+Madras",
     "facility": "Hostel, Labs, Gym",
     "support_and_service": "Alumni Network, Tech Support",
-    "main_category": "Domestic"
+    "main_category": "Domestic",
+    "recommended": true,
+    "status": "newest"
   },
   {
     "title": "University of Delhi",
@@ -19,13 +21,15 @@
     "time": "Regular, Distance",
     "course_or_program": "Arts, Commerce, Science",
     "category": "Undergraduate",
-    "image": "assets/img/colleges/du.jpg",
+    "image": "assets/img/education/campus-4.webp",
     "link": "https://www.du.ac.in",
     "country": "India",
     "campus_map": "https://maps.google.com/?q=University+of+Delhi",
     "facility": "Library, WiFi Campus, Cultural Centers",
     "support_and_service": "Student Helpdesk, Career Services",
-    "main_category": "Domestic"
+    "main_category": "Domestic",
+    "recommended": false,
+    "status": "oldest"
   },
   {
     "title": "Anna University",
@@ -33,13 +37,15 @@
     "time": "Regular",
     "course_or_program": "Engineering, Technology, Architecture",
     "category": "Undergraduate",
-    "image": "assets/img/colleges/anna-university.jpg",
+    "image": "assets/img/education/campus-7.webp",
     "link": "https://www.annauniv.edu",
     "country": "India",
     "campus_map": "https://maps.google.com/?q=Anna+University",
     "facility": "Research Labs, Library, Sports Facilities",
     "support_and_service": "Student Clubs, IT Support",
-    "main_category": "Domestic"
+    "main_category": "Domestic",
+    "recommended": true,
+    "status": "newest"
   },
   {
     "title": "Harvard University",
@@ -47,13 +53,15 @@
     "time": "Regular",
     "course_or_program": "Law, Business, Computer Science",
     "category": "Graduate, Doctoral",
-    "image": "assets/img/colleges/harvard.jpg",
+    "image": "assets/img/education/campus-1.webp",
     "link": "https://www.harvard.edu",
     "country": "USA",
     "campus_map": "https://maps.google.com/?q=Harvard+University",
     "facility": "Libraries, Innovation Labs, Housing",
     "support_and_service": "Health Services, Academic Support",
-    "main_category": "International"
+    "main_category": "International",
+    "recommended": true,
+    "status": "newest"
   },
   {
     "title": "University of Melbourne",
@@ -61,13 +69,15 @@
     "time": "Regular",
     "course_or_program": "Medicine, Engineering, Arts",
     "category": "Undergraduate, Graduate",
-    "image": "assets/img/colleges/melbourne.jpg",
+    "image": "assets/img/education/campus-3.webp",
     "link": "https://www.unimelb.edu.au",
     "country": "Australia",
     "campus_map": "https://maps.google.com/?q=University+of+Melbourne",
     "facility": "Campus Cafes, Research Labs, Art Galleries",
     "support_and_service": "Student Wellbeing, Scholarships",
-    "main_category": "International"
+    "main_category": "International",
+    "recommended": false,
+    "status": "oldest"
   },
   {
     "title": "University of Tokyo",
@@ -75,13 +85,15 @@
     "time": "Regular",
     "course_or_program": "Engineering, Political Science, Biotechnology",
     "category": "Graduate",
-    "image": "assets/img/colleges/tokyo.jpg",
+    "image": "assets/img/education/campus-5.webp",
     "link": "https://www.u-tokyo.ac.jp/en",
     "country": "Japan",
     "campus_map": "https://maps.google.com/?q=University+of+Tokyo",
     "facility": "Tech Labs, Library, Japanese Garden",
     "support_and_service": "Language Support, Exchange Programs",
-    "main_category": "International"
+    "main_category": "International",
+    "recommended": true,
+    "status": "newest"
   },
   {
     "title": "ETH Zurich",
@@ -89,12 +101,14 @@
     "time": "Regular",
     "course_or_program": "Mechanical Engineering, Physics, Computer Science",
     "category": "Graduate, Doctoral",
-    "image": "assets/img/colleges/eth-zurich.jpg",
+    "image": "assets/img/education/campus-10.webp",
     "link": "https://ethz.ch/en.html",
     "country": "Switzerland",
     "campus_map": "https://maps.google.com/?q=ETH+Zurich",
     "facility": "Research Hubs, Cafeterias, Mountainside Campus",
     "support_and_service": "Career Services, International Office",
-    "main_category": "International"
+    "main_category": "International",
+    "recommended": false,
+    "status": "oldest"
   }
 ]
