@@ -1,0 +1,68 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "category": "Politics",
+      "title": "Dolorum optio tempore voluptas dignissimos",
+      "image": "assets/img/blog/blog-post-1.webp",
+      "date": "2025-01-01",
+      "link": "blog-details.html"
+    },
+    {
+      "id": 2,
+      "category": "Sports",
+      "title": "Nisi magni odit consequatur autem nulla dolorem",
+      "image": "assets/img/blog/blog-post-2.webp",
+      "date": "2025-06-05",
+      "link": "blog-details.html"
+    },
+    {
+      "id": 3,
+      "category": "Entertainment",
+      "title": "Possimus soluta ut id suscipit ea ut in quo quia et soluta",
+      "image": "assets/img/blog/blog-post-3.webp",
+      "date": "2025-06-22",
+      "link": "blog-details.html"
+    },
+    {
+      "id": 4,
+      "category": "Sports",
+      "title": "Non rem rerum nam cum quo minus olor distincti",
+      "image": "assets/img/blog/blog-post-4.webp",
+      "date": "2025-06-30",
+      "link": "blog-details.html"
+    },
+    {
+      "id": 5,
+      "category": "Politics",
+      "title": "Accusamus quaerat aliquam qui debitis facilis consequatur",
+      "image": "assets/img/blog/blog-post-5.webp",
+      "date": "2025-01-30",
+      "link": "blog-details.html"
+    },
+    {
+      "id": 6,
+      "category": "Entertainment",
+      "title": "Distinctio provident quibusdam numquam aperiam aut",
+      "image": "assets/img/blog/blog-post-6.webp",
+      "date": "2025-02-14",
+      "link": "blog-details.html"
+    },
+    {
+      "id": 7,
+      "category": "Tech",
+      "title": "The future of AI and automation",
+      "image": "assets/img/blog/blog-post-7.webp",
+      "date": "2025-03-10",
+      "link": "blog-details.html"
+    },
+    {
+      "id": 8,
+      "category": "Health",
+      "title": "10 tips for a healthy lifestyle",
+      "image": "assets/img/blog/blog-post-8.webp",
+      "date": "2025-04-01",
+      "link": "blog-details.html"
+    }
+  ]
+}
