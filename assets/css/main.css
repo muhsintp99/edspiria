@@ -140,6 +140,12 @@ h6 {
   z-index: 997;
 }
 
+@media (max-width:570px) {
+  .header {
+    padding: 10px 0;
+  }
+}
+
 .header .logo {
   line-height: 1;
 }
@@ -284,7 +290,8 @@ h6 {
     font-size: 40px;
     color: var(--accent-color);
   }
-  .header .call-cta .text-call{
+
+  .header .call-cta .text-call {
     color: var(--nav-color);
   }
 }
@@ -637,7 +644,8 @@ h6 {
 
 #instagram-btn {
   bottom: 180px;
-  background-color: #e1306c; /* Instagram pink */
+  background-color: #e1306c;
+  /* Instagram pink */
 }
 
 #instagram-btn.active {
@@ -651,7 +659,8 @@ h6 {
 
 #facebook-btn {
   bottom: 235px;
-  background-color: #3b5998; /* Facebook blue */
+  background-color: #3b5998;
+  /* Facebook blue */
 }
 
 #facebook-btn.active {
@@ -973,12 +982,14 @@ section,
   font-weight: 800;
   margin: 0;
   line-height: 1;
+  text-align: start;
 }
 
 .hero .hero-container .stats-card .stats-grid .stat-item .stat-content p {
   opacity: 0.8;
   margin: 5px 0 0 0;
   font-size: 0.9rem;
+  text-align: start;
 }
 
 @media (max-width: 576px) {
@@ -986,6 +997,25 @@ section,
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+}
+
+@media (max-width: 420px) {
+  .hero .hero-container .stats-card .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .hero .hero-container .stats-card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 340px) {
+  .hero .hero-container .stats-card .stats-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
+
 }
 
 @media (max-width: 992px) {

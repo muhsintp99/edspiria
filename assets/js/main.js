@@ -96,8 +96,8 @@
     const scrollTopBtn = document.querySelector('#scroll-top-btn');
     const phoneBtn = document.querySelector('#phone-btn');
     const whatsappBtn = document.querySelector('#whatsapp-btn');
-    const instagramBtn = document.querySelector('#instagram-btn'); // added
-    const facebookBtn = document.querySelector('#facebook-btn');   // added
+    // const instagramBtn = document.querySelector('#instagram-btn'); // added
+    // const facebookBtn = document.querySelector('#facebook-btn');   // added
 
     // Toggle visibility based on scroll position
     function toggleButtons() {
@@ -105,14 +105,14 @@
         scrollTopBtn.classList.add('active');
         phoneBtn.classList.add('active');
         whatsappBtn.classList.add('active');
-        instagramBtn.classList.add('active'); // added
-        facebookBtn.classList.add('active');  // added
+        // instagramBtn.classList.add('active'); // added
+        // facebookBtn.classList.add('active');  // added
       } else {
         scrollTopBtn.classList.remove('active');
         phoneBtn.classList.remove('active');
         whatsappBtn.classList.remove('active');
-        instagramBtn.classList.remove('active'); // added
-        facebookBtn.classList.remove('active');  // added
+        // instagramBtn.classList.remove('active'); // added
+        // facebookBtn.classList.remove('active');  // added
       }
     }
 
