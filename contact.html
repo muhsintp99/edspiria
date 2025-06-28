@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Contact - NiceSchool Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Custom styles for form elements -->
+  <style>
+    .error {
+      display: none;
+      color: #dc3545;
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+
+    .success {
+      display: none;
+      color: #155724;
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+
+    .loading {
+      display: none;
+      color: #856404;
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+
+    .is-invalid ~ .input-with-icon i {
+      color: #dc3545;
+    }
+
+    .is-valid ~ .input-with-icon i {
+      color: #28a745;
+    }
+  </style>
+</head>
+
+<body class="contact-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="./assets/img/logos/favicon.png" alt="EDSPIRIA logo">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li><a href="international.html">International</a></li>
+          <li><a href="demostic.html">Domestic</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="call-cta d-none d-lg-flex align-items-center pl-4">
+        <i class="bi bi-phone me-3"></i>
+        <div>
+          <h6 class="text-call text-uppercase mb-1"><small>Call Anytime</small></h6>
+          <h6 class="m-0">
+            <span>
+              <a href="tel:+155895548855" class="p-0">+1 5589 55488 55</a>
+            </span>
+          </h6>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background" style="background-image: url(./assets/img/blog/contact-student-program.jpeg);">
+      <div class="container position-relative">
+        <h1>Contact</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Contact</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Contact Info Boxes -->
+        <div class="row gy-4 mb-5">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-info-box">
+              <div class="icon-box">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+              <div class="info-content">
+                <h4>Our Address</h4>
+                <p>1842 Maple Avenue, Portland, Oregon 97204</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="contact-info-box">
+              <div class="icon-box">
+                <i class="bi bi-envelope"></i>
+              </div>
+              <div class="info-content">
+                <h4>Email Address</h4>
+                <p>info@example.com</p>
+                <p>contact@example.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="contact-info-box">
+              <div class="icon-box">
+                <i class="bi bi-headset"></i>
+              </div>
+              <div class="info-content">
+                <h4>Hours of Operation</h4>
+                <p>Sunday-Fri: 9 AM - 6 PM</p>
+                <p>Saturday: 9 AM - 4 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Google Maps (Full Width) -->
+      <div class="map-section" data-aos="fade-up" data-aos-delay="200">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2804.159450824991!2d-122.676207684352!3d45.5186999791018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5495a0b3f3b8c3b7%3A0x4c3e8f1b7e7b7e7!2s1842%20Maple%20Ave%2C%20Portland%2C%20OR%2097204!5e0!3m2!1sen!2sus!4v1747543546205!5m2!1sen!2sus"
+          width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" aria-label="Map showing our location"></iframe>
+      </div>
+
+      <!-- Contact Form Section (Overlapping) -->
+      <div class="container form-container-overlap">
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-10">
+            <div class="contact-continer">
+              <h2 class="text-center mb-4">Get in Touch</h2>
+
+              <form id="contact-form" class="contactForm" method="POST" action="http://localhost:5050/contact/">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="input-with-icon">
+                        <i class="bi bi-person"></i>
+                        <input type="text" class="form-control" name="fullname" id="fullname" placeholder="First Name"
+                          required aria-label="Full Name">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="input-with-icon">
+                        <i class="bi bi-envelope"></i>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address"
+                          required aria-label="Email Address">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="input-with-icon">
+                        <i class="bi bi-telephone"></i>
+                        <input type="tel" class="form-control" name="mobile" id="mobile" placeholder="Contact Number"
+                          required aria-label="Contact Number">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="input-with-icon">
+                        <i class="bi bi-text-left"></i>
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                          required aria-label="Subject">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-group">
+                      <div class="input-with-icon">
+                        <i class="bi bi-chat-dots message-icon"></i>
+                        <textarea class="form-control" name="message" id="message" placeholder="Write Message..."
+                          style="height: 180px" required aria-label="Message"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div id="loading-alert" class="alert alert-warning d-none"><i
+                        class="bi bi-hourglass-split me-2"></i>Sending your message...</div>
+                    <div id="error-alert" class="alert alert-danger d-none"><i
+                        class="bi bi-exclamation-triangle me-2"></i><span id="error-text">Please fill in all fields
+                        correctly.</span></div>
+                    <div id="success-alert" class="alert alert-success d-none"><i
+                        class="bi bi-check-circle me-2"></i>Your message has been sent successfully!</div>
+                  </div>
+
+                  <div class="col-12 text-center">
+                    <button type="submit" id="submit-btn" class="btn btn-primary btn-submit">SEND MESSAGE</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative dark-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">
+              <img src="./assets/img/logos/favicon.png" alt="">
+            </span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>1842 Maple Avenue</p>
+            <p>Portland, Oregon 97204</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-us.html">About us</a></li>
+            <li><a href="international.html">International</a></li>
+            <li><a href="demostic.html">Domestic</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>We are's</h4>
+          <ul>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="blog.html">News</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-3 footer-links">
+          <h4>Follow up</h4>
+          <div class="footer-contact pt-1">
+            <p>Empowering students to achieve global and domestic academic success through expert guidance and dedicated
+              support. Explore new opportunities with Edspiria.</p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">EDSPIRIA</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        Designed by <a href="https://bloombizcreatives.com/">Bloombiz Creatives</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top-btn" class="scroll-top d-flex align-items-center justify-content-center"
+    aria-label="Go to top">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <a href="tel:+155895548855" id="phone-btn" class="scroll-top d-flex align-items-center justify-content-center"
+    aria-label="Call Me">
+    <i class="bi bi-telephone-fill"></i>
+  </a>
+
+  <a href="https://wa.me/155895548855" id="whatsapp-btn" target="_blank"
+    class="scroll-top d-flex align-items-center justify-content-center" aria-label="Chat on WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const loadingAlert = document.getElementById('loading-alert');
+      const errorAlert = document.getElementById('error-alert');
+      const successAlert = document.getElementById('success-alert');
+      const errorText = document.getElementById('error-text');
+
+      const showAlert = (element, message = '') => {
+        [loadingAlert, errorAlert, successAlert].forEach(alert => alert.classList.add('d-none'));
+        if (message) errorText.textContent = message;
+        element.classList.remove('d-none');
+      };
+
+      const validateForm = () => {
+        let valid = true;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+        const fields = ['fullname', 'email', 'mobile', 'subject', 'message'];
+
+        fields.forEach(id => {
+          const input = document.getElementById(id);
+          input.classList.remove('is-invalid', 'is-valid');
+          const value = input.value.trim();
+
+          if (!value) {
+            input.classList.add('is-invalid');
+            valid = false;
+            showAlert(errorAlert, 'Please fill in all required fields.');
+          } else if (id === 'email' && !emailRegex.test(value)) {
+            input.classList.add('is-invalid');
+            valid = false;
+            showAlert(errorAlert, 'Please enter a valid email address.');
+          } else if (id === 'mobile' && !phoneRegex.test(value.replace(/[\s\-()]/g, ''))) {
+            input.classList.add('is-invalid');
+            valid = false;
+            showAlert(errorAlert, 'Please enter a valid phone number.');
+          } else {
+            input.classList.add('is-valid');
+          }
+        });
+        return valid;
+      };
+
+      form.addEventListener('input', e => {
+        if (e.target.matches('input, textarea')) {
+          e.target.classList.remove('is-invalid', 'is-valid');
+          [loadingAlert, errorAlert, successAlert].forEach(alert => alert.classList.add('d-none'));
+        }
+      });
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        if (!validateForm()) {
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Sending...';
+        showAlert(loadingAlert);
+
+        const formData = {
+          fullname: document.getElementById('fullname').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          mobile: document.getElementById('mobile').value.trim(),
+          subject: document.getElementById('subject').value.trim(),
+          message: document.getElementById('message').value.trim()
+        };
+
+        try {
+          const response = await fetch('http://localhost:5050/contact/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `Server error: ${response.status}`);
+          }
+
+          await response.json();
+          showAlert(successAlert);
+          form.reset();
+          form.querySelectorAll('.is-valid').forEach(el => el.classList.remove('is-valid'));
+        } catch (error) {
+          showAlert(errorAlert, error.message.includes('Failed to fetch') ?
+            'Unable to connect to server. Please ensure the backend is running.' : `Error: ${error.message}`);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'SEND MESSAGE';
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
