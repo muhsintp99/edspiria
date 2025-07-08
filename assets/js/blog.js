@@ -74,4 +74,4 @@ function gotoPage(page) {
 window.onload = fetchBlogData;
 
 
-console.log(gotoPage,"blog");
+// console.log(gotoPage,"blog");

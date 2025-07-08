@@ -55,7 +55,7 @@
       <div class="call-cta d-none d-lg-flex align-items-center pl-4">
         <i class="bi bi-phone me-3"></i>
         <div>
-          <h6 class="text-call text-uppercase mb-1"><small>Calling Us</small></h6>
+          <h6 class="text-call text-uppercase mb-1"><small>Contact Us</small></h6>
           <h6 class="m-0">
             <span>
               <a href="tel:+918848241321" class="p-0">+91 8848 241 321</a>
@@ -97,8 +97,7 @@
           <div class="col-lg-8 mx-auto">
             <div class="search-container" data-aos="fade-up" data-aos-delay="200">
               <div class="input-group">
-                <input type="text" class="form-control"
-                  placeholder="Search Domestic Campuses ...">
+                <input type="text" class="form-control" placeholder="Search Domestic Campuses ...">
 
                 <button class="btn search-btn" id="searchBtn" type="button"><i class="bi bi-search"></i></button>
               </div>
@@ -240,18 +239,19 @@
 
   <script>
     let colleges = []; // full college data
-
-    console.log("college:", colleges);
+    let backendURL = '';
 
 
     // fetch data from API
     fetch('./assets/js/json/config.json')
       .then(res => res.json())
       .then(config => {
-        return fetch(`${config.configApi}/college?domestic=true`);
+        backendURL = config.configApi;
+        return fetch(`${backendURL}/college?domestic=true`);
       })
       .then(res => res.json())
       .then(data => {
+        console.log("data:", data);
         colleges = data?.colleges || [];
         populateFilters(colleges);
         renderCards(colleges);
@@ -332,7 +332,6 @@
     }
 
 
-    // Render Cards
     function renderCards(data) {
       const container = document.querySelector('#campusCardContainer');
       container.innerHTML = '';
@@ -344,25 +343,30 @@
 
       data.forEach(item => {
         const coursesList = item.courses.map(course => course.title).join(", ");
+        const collegeImage = item.image && !item.image.startsWith('http') ? `${backendURL}${item.image}` : item.image;
+        const countryFlag = item.country?.image && !item.country.image.startsWith('http')
+          ? `${backendURL}${item.country.image}`
+          : item.country?.image || './assets/img/placeholder-country.png';
+
         const card = document.createElement('div');
         card.className = 'col-md-6 col-lg-4';
         card.innerHTML = `
       <div class="faculty-card">
         <div class="faculty-image">
-<img 
-  src="${item.image || './assets/img/defult/noimage.png'}" 
-  alt="${item.name}" 
-  class="img-fluid"
-  onerror="this.onerror=null; this.src='./assets/img/placeholder-college.jpg';"
-/>
+          <img 
+            src="${collegeImage || './assets/img/defult/noimage.png'}" 
+            alt="${item.name}" 
+            class="img-fluid"
+            onerror="this.onerror=null; this.src='./assets/img/placeholder-college.jpg';"
+          />
         </div>
         <div class="faculty-info">
           <h4>${item.name}</h4> 
           <p class="faculty-title">${item.desc || ''}</p>
           <div class="faculty-specialties">
-            <span><strong> ${item.category || 'N/A'}</strong></span>
-            <span><strong> ${item.country?.name || 'N/A'}</strong></span>
-            <span><strong> ${coursesList || 'N/A'}</strong></span>
+            <span><strong>${item.category || 'N/A'}</strong></span>
+            <span><strong>${item.country?.name || 'N/A'}</strong></span>
+            <span><strong>${coursesList || 'N/A'}</strong></span>
           </div>
           <div class="faculty-contact mt-3">
             <a href="${item.website}" target="_blank" class="btn btn-primary btn-sm me-2">
@@ -378,13 +382,17 @@
               <strong>Email: ${item.email}</strong><br>
               <div class="row justify-content-center align-items-center mt-2">
                 <div class="col-6 text-start">
-                    ${item.status === 'recommended' ? '<span class="badge bg-success">Recommended</span>' : ''}
+                  ${item.status === 'recommended' ? '<span class="badge bg-success">Recommended</span>' : ''}
                 </div>
                 <div class="col-6 text-end">
-                    <img src="${item.country?.image || 'N/A'}" alt="${item.country?.name || 'N/A'}" height="40px">
+                  <img 
+                    src="${countryFlag}" 
+                    alt="${item.country?.name || 'N/A'}" 
+                    height="40px"
+                    onerror="this.onerror=null; this.src='./assets/img/placeholder-country.png';"
+                  />
                 </div>
-                </div>
-
+              </div>
             </small>
           </div>
         </div>
