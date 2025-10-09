@@ -1,7 +1,3 @@
 {
-  "configApi": "http://localhost:1010"
+  "configApi": "https://api.edspiriainternational.com"
 }
-
-
-
-
