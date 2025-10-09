@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Contact - NiceSchool Bootstrap Template</title>
+  <title>Contact - Edspiria International</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -174,9 +174,9 @@
       <!-- Google Maps (Full Width) -->
       <div class="map-section" data-aos="fade-up" data-aos-delay="200">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d929.9620411034617!2d75.7910660695531!3d11.225755499309487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba6597626765e39%3A0x4a210cc054b4e22a!2s4%20WING%20AVENUE!5e1!3m2!1sen!2sin!4v1751624323261!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.4844895327815!2d75.78932507481186!3d11.225726488951667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba6592fb0400ac3%3A0xa2b97e7084028607!2sEdspiria%20International!5e0!3m2!1sen!2sin!4v1758882622343!5m2!1sen!2sin"
           width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" aria-label="Map showing our location"></iframe>
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <!-- Contact Form Section (Overlapping) -->
@@ -186,7 +186,7 @@
             <div class="contact-continer">
               <h2 class="text-center mb-4">Get in Touch</h2>
 
-              <form id="contact-form" class="contactForm" method="POST" action="http://localhost:5050/contact/">
+              <form id="contact-form" class="contactForm" method="POST" action="http://localhost:1010/contact/">
                 <div class="row g-3">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -362,13 +362,24 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
       const form = document.getElementById('contact-form');
       const submitBtn = document.getElementById('submit-btn');
       const loadingAlert = document.getElementById('loading-alert');
       const errorAlert = document.getElementById('error-alert');
       const successAlert = document.getElementById('success-alert');
       const errorText = document.getElementById('error-text');
+
+      let backendURL = '';
+
+      // Load config once
+      try {
+        const configRes = await fetch('./assets/js/json/config.json');
+        const configData = await configRes.json();
+        backendURL = configData.configApi;
+      } catch (err) {
+        console.error('Failed to load config.json', err);
+      }
 
       const showAlert = (element, message = '') => {
         [loadingAlert, errorAlert, successAlert].forEach(alert => alert.classList.add('d-none'));
@@ -416,7 +427,9 @@
       form.addEventListener('submit', async e => {
         e.preventDefault();
 
-        if (!validateForm()) {
+        if (!validateForm()) return;
+        if (!backendURL) {
+          showAlert(errorAlert, 'Backend URL not configured.');
           return;
         }
 
@@ -433,7 +446,7 @@
         };
 
         try {
-          const response = await fetch('http://localhost:5050/contact/', {
+          const response = await fetch(`${backendURL}/contact/`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
@@ -449,8 +462,9 @@
           form.reset();
           form.querySelectorAll('.is-valid').forEach(el => el.classList.remove('is-valid'));
         } catch (error) {
-          showAlert(errorAlert, error.message.includes('Failed to fetch') ?
-            'Unable to connect to server. Please ensure the backend is running.' : `Error: ${error.message}`);
+          showAlert(errorAlert, error.message.includes('Failed to fetch')
+            ? 'Unable to connect to server. Please ensure the backend is running.'
+            : `Error: ${error.message}`);
         } finally {
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'SEND MESSAGE';

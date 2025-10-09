@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>International - DESPIRIA</title>
+  <title>International - Edspiria International</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -106,10 +106,10 @@
         <!-- Filters -->
         <div class="row">
           <div class="col-lg-3">
-            <div class="departments-nav mb-4">
+            <!-- <div class="departments-nav mb-4">
               <h4 class="departments-title">Program</h4>
               <ul class="nav flex-column" id="filterProgram"></ul>
-            </div>
+            </div> -->
             <div class="departments-nav mb-4">
               <h4 class="departments-title">Country</h4>
               <ul class="nav flex-column" id="filterCountry"></ul>
@@ -246,7 +246,7 @@
       .then(res => res.json())
       .then(config => {
         backendURL = config.configApi;
-        return fetch(`${backendURL}/college?domestic=false`);
+        return fetch(`${backendURL}/college?isDomestic=false`);
       })
       .then(res => res.json())
       .then(data => {
@@ -301,6 +301,8 @@
       course: 'all'
     };
 
+    let selectedSearch = '';
+
     function handleFilterClick(e) {
       if (e.target.tagName !== 'BUTTON') return;
       const type = e.target.dataset.filterType;
@@ -320,7 +322,14 @@
         const matchProgram = selectedFilters.program === 'all' || item.category === selectedFilters.program;
         const matchCountry = selectedFilters.country === 'all' || item.country?.name === selectedFilters.country;
         const matchCourse = selectedFilters.course === 'all' || item.courses.some(course => course.title === selectedFilters.course);
-        return matchProgram && matchCountry && matchCourse;
+        const matchSearch = !selectedSearch ||
+          item.name.toLowerCase().includes(selectedSearch) ||
+          (item.country?.name || '').toLowerCase().includes(selectedSearch) ||
+          item.courses.some(course => course.title.toLowerCase().includes(selectedSearch)) ||
+          (item.category || '').toLowerCase().includes(selectedSearch) ||
+          (item.desc || '').toLowerCase().includes(selectedSearch) ||
+          (item.address || '').toLowerCase().includes(selectedSearch);
+        return matchProgram && matchCountry && matchCourse && matchSearch;
       });
 
       renderCards(filtered);
@@ -373,8 +382,7 @@
             </div>
             <div class="faculty-meta mt-2">
               <small class="text-muted">
-                <strong>Phone: ${item.phone}</strong><br>
-                <strong>Email: ${item.email}</strong><br>
+                
                 <div class="row justify-content-center align-items-center mt-2">
                   <div class="col-6 text-start">
                       ${item.status === 'recommended' ? '<span class="badge bg-success">Recommended</span>' : ''}
@@ -396,6 +404,23 @@
         container.appendChild(card);
       });
     }
+
+    // Search functionality
+    const searchInput = document.querySelector('.form-control[placeholder="Search International Campuses..."]');
+    const searchBtn = document.getElementById('searchBtn');
+
+    function performSearch() {
+      selectedSearch = searchInput.value.trim().toLowerCase();
+      applyFilters();
+    }
+
+    searchBtn.addEventListener('click', performSearch);
+
+    searchInput.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
   </script>
 
 

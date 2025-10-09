@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Domestic - DESPIRIA</title>
+  <title>Domestic - Edspiria International</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -248,7 +248,7 @@
       .then(res => res.json())
       .then(config => {
         backendURL = config.configApi;
-        return fetch(`${backendURL}/college?domestic=true`);
+        return fetch(`${backendURL}/college?isDomestic=true`);
       })
       .then(res => res.json())
       .then(data => {
