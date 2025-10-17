@@ -285,15 +285,66 @@ h6 {
     left: -100%;
     visibility: visible;
   }
+.header .call-cta {
+  border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  margin-left: 15px;
+  padding: 0px 10px 0px 10px;
+  transition: all 0.3s ease;
+  /* background-color: #2d465e;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+}
 
-  .header .call-cta i {
-    font-size: 40px;
-    color: var(--accent-color);
-  }
+.header .call-cta i {
+  font-size: 30px;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
 
-  .header .call-cta .text-call {
-    color: var(--nav-color);
-  }
+.header .call-cta .text-call {
+  color: var(--nav-color);
+  transition: color 0.3s ease;
+}
+
+.header .call-cta .text-call a {
+  color: var(--nav-hover-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header .call-cta .arrow-right {
+  font-size: 16px;
+  font-weight: 600;
+  height: 24px;
+  width: 24px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  padding: 4px 6px;
+  transition: all 0.3s ease;
+  color: var(--default-color);
+  rotate: -45deg;
+}
+
+/* 🔹 Hover Effects */
+/* .header .call-cta:hover {
+  background-color: var(--accent-color);
+  border-radius: 16px;
+  cursor: pointer;
+} */
+
+.header .call-cta:hover i,
+.header .call-cta:hover .text-call,
+.header .call-cta:hover .text-call a {
+  color: #fff;
+}
+
+.header .call-cta:hover .arrow-right {
+  background-color: #fff;
+  color: var(--accent-color);
+}
+
 }
 
 /* Navmenu - Mobile */
